@@ -17,7 +17,7 @@ class ProjectActivityModificationController extends BaseController
             )
         ));
     }
-    
+
     public function delete()
     {
         if ($this->userSession->isAdmin()) {
@@ -32,7 +32,7 @@ class ProjectActivityModificationController extends BaseController
     {
         if ($this->userSession->isAdmin()) {
             $event_id = $this->request->getIntegerParam('event_id');
-            
+
             $this->projectActivityModificationModel->toggleVisibility($event_id);
             $this->response->redirect('');
         }

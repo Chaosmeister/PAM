@@ -1,4 +1,5 @@
 <?php
+
 namespace Kanboard\Plugin\PAM\Model;
 
 use Kanboard\Model\ProjectActivityModel;
@@ -8,15 +9,12 @@ class ProjectActivityModificationModel extends ProjectActivityModel
     public function toggleVisibility($event_id)
     {
         $event = $this->db->table(self::TABLE)->eq('id', $event_id)->findOne();
-        
+
         if ($event) {
             $data = json_decode($event['data'], true);
-            if (isset($data['hidden']))
-            {
+            if (isset($data['hidden'])) {
                 unset($data['hidden']);
-            }
-            else
-            {
+            } else {
                 $data['hidden'] = '1';
             }
 
@@ -31,11 +29,11 @@ class ProjectActivityModificationModel extends ProjectActivityModel
     public function delete($event_id)
     {
         $event = $this->db->table(self::TABLE)->eq('id', $event_id)->findOne();
-        
+
         if ($event) {
-               
+
             $this->db->table(self::TABLE)->eq('id', $event['id'])->remove();
-            
+
             return true;
         }
 

@@ -9,5 +9,5 @@
     <?php endif ?>
 </div>
 
-<?php require "Inject.php" ?>
+<?php require "inject.php" ?>
 <?= $this->render('event/events', array('events' => $events)) ?>
