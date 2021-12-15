@@ -1,5 +1,5 @@
 # PAM
-Kanboard - Project activity modification
+Kanboard - Project activity modifier
 
 This plugin adds hide/show or delete buttons for administrators to every event on activity streams  
 This can be used to clean up histories or redact sensitive information
