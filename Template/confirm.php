@@ -12,6 +12,7 @@
         'delete',
         array(
             'event_id' => $event_id,
+            'task_id' => $task_id,
             'plugin' => 'PAM')
         ); ?>
 </div>

@@ -1,5 +1,5 @@
 <?php
-if ($this->user->isadmin()) {
+if ($this->user->isAdmin()) {
     $sub_str = '</small>';
     $icon = 'eye-slash';
 
@@ -22,7 +22,8 @@ if ($this->user->isadmin()) {
             'confirm',
             array(
                 'plugin' => 'PAM',
-                'event_id' => $event['id']
+                'event_id' => $event['id'],
+                'task_id' => $task['id'],
             ),
         );
 
