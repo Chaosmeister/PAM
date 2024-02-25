@@ -1,10 +1,9 @@
 <?php
-if ($this->user->isAdmin()) {
-    $sub_str = '</small>';
-    $icon = 'eye-slash';
+$sub_str = '</small>';
+$icon = 'eye-slash';
 
-    foreach ($events as &$event) {
-
+foreach ($events as $index => &$event) {
+    if ($this->helper->projectRole->canRemoveTask($event['task'])) {
         if (isset($event['hidden'])) {
             $icon = 'eye';
         } else {
@@ -13,7 +12,7 @@ if ($this->user->isAdmin()) {
 
         $insert_str = '<div class="pull-right">';
 
-        $insert_str .= '<a class="btn PAM_toggleVisibility" data-event_id="' . $event['id'] . '"><i class="fa fa-fw fa-' . $icon . '" style="pointer-events: none;"></i></a>';
+        $insert_str .= '<a class="btn PAM_toggleVisibility" data-event_id="' . $event['id'] . '" data-task_id="' . $event['task_id'] . '"><i class="fa fa-fw fa-' . $icon . '" style="pointer-events: none;"></i></a>';
 
         $insert_str .= $this->helper->modal->mediumButton(
             'trash',
@@ -31,8 +30,7 @@ if ($this->user->isAdmin()) {
 
         $event['event_content'] = str_replace($sub_str, $sub_str . $insert_str, $event['event_content']);
     }
-} else {
-    foreach ($events as $index => &$event) {
+    else {
         if (isset($event['hidden'])) {
             unset($events[$index]);
         }
