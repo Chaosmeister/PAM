@@ -23,7 +23,7 @@ if ($this->user->isAdmin()) {
             array(
                 'plugin' => 'PAM',
                 'event_id' => $event['id'],
-                'task_id' => $task['id'],
+                'task_id' => $event['task_id'],
             ),
         );
 
